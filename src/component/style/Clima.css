@@ -1,0 +1,18 @@
+.cardClimaApi {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+
+
+/**Estilos de la tarjeta de clima  de hover para sombra */
+.climatotal{
+    box-shadow: 0 0 30px rgb(236, 178, 195);
+    cursor: pointer;
+}
+
+.cardPronostico{
+    margin-left: 2em;
+}

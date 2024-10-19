@@ -1,0 +1,44 @@
+
+
+body {
+  margin: 0;
+  background-color: #232946; /* Color de fondo oscuro para simular la lluvia */
+}
+
+.headerxd {
+  height: auto;
+}
+
+.cards {
+  position: relative;
+  z-index: 2; /* Asegúrate de que las cartas se muestren sobre el fondo */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+/* Estilos para las gotas de lluvia */
+.drop {
+  position: absolute;
+  width: 2px; /* Ancho de las gotas */
+  height: 15px; /* Altura de las gotas */
+  background: rgb(255, 255, 255); /* Color de las gotas (un azul claro) */
+  border-radius: 10px; /* Bordes redondeados */
+  opacity: 0.7; /* Opacidad de las gotas */
+  animation: fall linear infinite; /* Aplicar animación */
+}
+
+/* Animación de caída de las gotas */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px); /* Comenzar desde arriba */
+  }
+  100% {
+    transform: translateY(100vh); /* Caer hasta el fondo de la pantalla */
+  }
+}
