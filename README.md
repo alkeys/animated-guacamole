@@ -31,6 +31,10 @@ api para el clima openweathermap.org
 
 [![2024-10-19-16-29.png](https://i.postimg.cc/G3q0W7vQ/2024-10-19-16-29.png)](https://postimg.cc/NL9PTxJ9)
 
+[![imagen.png](https://i.postimg.cc/QMXk7mnL/imagen.png)](https://postimg.cc/68mvJrXz)
+
+
+[![imagen.png](https://i.postimg.cc/yNvhyRwD/imagen.png)](https://postimg.cc/8Ffr17kG)
 # Diagramas 
 
 [![Sin-t-tulo.jpg](https://i.postimg.cc/cJQBZ4c5/Sin-t-tulo.jpg)](https://postimg.cc/wtjmQzZh)

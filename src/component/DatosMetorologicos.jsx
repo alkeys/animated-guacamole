@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { HuemdadDHT, MediaTempDhtBmp, ObtenerVelicidad, PresionBMP } from "../Service/DataControler.js";
+import { HuemdadDHT, MediaTempDhtBmp, ObtenerVelicidad, PresionBMP,LatitudGPS,LongitudGPS } from "../Service/DataControler.js";
 import './style/datos.css';
+import Mapa from "./Mapa.jsx";
 const WeatherStation = () => {
     const [weatherData, setWeatherData] = useState({
         temperature: null,
         pressure: null,
         humidity: null,
         windSpeed: null,
+        latitude: null,
+        longitude: null
     });
 
     const [loading, setLoading] = useState(true);
@@ -18,6 +21,8 @@ const WeatherStation = () => {
             pressure: PresionBMP().toFixed(2),
             humidity: HuemdadDHT(),
             windSpeed: ObtenerVelicidad(),
+            latitude: LatitudGPS(),
+            longitude: LongitudGPS()
         };
         setWeatherData(data);
         setLoading(false);
@@ -71,6 +76,10 @@ const WeatherStation = () => {
                     </div>
                     <p className="text-lg text-gray-800">{weatherData.windSpeed} km/h</p>
                 </div>
+            </div>
+{/*           para el mapa */}
+            <div className="mt-6">
+                <Mapa lat={weatherData.latitude} lng={weatherData.longitude} />
             </div>
         </div>
     );

@@ -66,8 +66,6 @@ function SerialConnection() {
             >
                 {isConnected ? 'Conectado' : 'Conectar'}
             </button>
-            {/* Puedes mostrar los datos recibidos aquí */}
-
         </div>
     );
 }
