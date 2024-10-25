@@ -2,8 +2,6 @@ import './App.css';
 import Header from "./component/Header.jsx";
 import DatosMetorologicos from "./component/DatosMetorologicos.jsx";
 import Clima from "./component/Clima.jsx";
-import Carga from "./component/Carga.jsx";
-import Xd from "./pages/Xd.jsx";
 import Tiempografica from "./pages/Tiempografica.jsx";
 import Mapameteorologico from "./component/Mapameteorologico.jsx";
 
@@ -35,7 +33,6 @@ function App() {
                 <div className="cards">
                     <DatosMetorologicos />
                     <Clima />
-                    <Xd></Xd>
                 </div>
                 <div>
                     <Tiempografica ></Tiempografica>
