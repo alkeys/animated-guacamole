@@ -4,7 +4,7 @@ import Seria from "../Service/Seria.jsx";
 import Carga from "./Carga.jsx";
 
 
-const Header = () => {
+const Header = ( {handleScreen}) => {
     const [drops, setDrops] = useState([]);
     const [isRaining, setIsRaining] = useState(true); // Estado para controlar la lluvia
 
@@ -49,13 +49,25 @@ const Header = () => {
             <p className="text-lg">Proyecto de Arquitetura</p>
             <div className="rain-container">{drops}</div>
 
-            <div className="mt-6 flex justify-center space-x-4 z-10 relative">
+            <div className="mt-6 flex  justify-center space-x-4 z-10 relative">
                 <div className={"botones"}>
                     <Seria></Seria>
-                    <Carga ></Carga>
+                    <Carga></Carga>
                 </div>
-
+                <div className="botones  space-x-2">
+                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla1")}>Datos Meteorologicos
+                    </button>
+                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla2")}>Graficos
+                    </button>
+                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla3")}>Mapas
+                    </button>
+                </div>
             </div>
+
+
         </header>
     );
 };

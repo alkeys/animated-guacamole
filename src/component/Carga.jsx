@@ -6,7 +6,7 @@ const ConnectionStatus = () => {
     // Simula la conexión cambiando el estado cada 1 segundo
     useEffect(() => {
         const interval = setInterval(() => {
-            setIsConnected(EstadoConexion()); // Alterna entre conectado y conectando
+            setIsConnected(EstadoConexion());
         }, 1000);
 
         // Limpiar el intervalo cuando el componente se desmonta
