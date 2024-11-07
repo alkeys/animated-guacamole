@@ -58,13 +58,13 @@ const Header = ( {handleScreen}) => {
                     <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla1")}>Datos Meteorologicos
                     </button>
-                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                    <button className="block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla2")}>Graficos
                     </button>
-                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                    <button className="hidden sm:block md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla3")}>Mapas
                     </button>
-                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                    <button className="hidden sm:block md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla4")}>Informes
                     </button>
                 </div>

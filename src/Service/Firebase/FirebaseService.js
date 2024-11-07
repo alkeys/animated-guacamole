@@ -1,9 +1,5 @@
-import { boot } from "quasar/wrappers"; //se utiliza para inicializar configuraciones globales o plugins
 import { initializeApp } from "firebase/app"; // inicializa la aplicación de Firebase con una configuración específica
 import { getFirestore } from "firebase/firestore"; //para acceder a la base de datos Firestore de Firebase
-import { VueFire } from "vuefire"; //para integrar Firebase con Vue de una manera más sencilla
-import { getStorage } from "firebase/storage"; //para acceder al almacenamiento de Firebase, donde se guardan archivos como imágenes o documentos
-
 
 // Objeto que contiene la configuración de Firebase necesaria para conectarse al proyecto de firebase
 const firebaseConfig = {
@@ -18,11 +14,5 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
-// Exporta una función "boot" que se ejecuta durante el arranque de la aplicación en react
-export default boot(({ app }) => {
-  app.use(VueFire, { app, modules: [] });
-});
-
-export { db, storage };
+export { db };

@@ -5,15 +5,32 @@ import Tiempografica from "./Tiempografica.jsx";
 import Mapameteorologico from "../component/Mapameteorologico.jsx";
 import {useEffect} from "react";
 import {useState} from "react";
+import { agregarMedicion } from "../Service/Firebase/Crudfirebase.js";
+import { HuemdadDHT, MediaTempDhtBmp, ObtenerVelicidad, PresionBMP,LatitudGPS,LongitudGPS } from "../Service/DataControler.js";
+import {EstadoConexion} from "../Service/DataControler.js";
+
 const Home = () => {
     const [ActivarPantalla, setActivarPantalla] = useState("Pantalla1");
     /**
      * funcion para guardar datos en la base de datos cada 30 minutos
      */
-    useEffect(() => {
-        const interval = setInterval(() => {
 
-        }, 1800000); //1800000=30 minutos
+    
+    useEffect(() => {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isConnected = EstadoConexion();
+        if (isMobile || !isConnected) return console.log("En mobile no carga datos o no estas conectado!"); 
+        const interval = setInterval(() => {
+            const data = {
+                temperature: MediaTempDhtBmp().toFixed(2),
+                pressure: PresionBMP().toFixed(2),
+                humidity: HuemdadDHT(),
+                windSpeed: ObtenerVelicidad(),
+                latitude: LatitudGPS(),
+                longitude: LongitudGPS()
+            };
+            agregarMedicion(getDate(), getHour(), data)
+        }, 1800); //1800000=30 minutos
         return () => clearInterval(interval);
     }, []);
 
@@ -60,5 +77,27 @@ const Pantalla4 = () => (
     </div>
 );
 
+const getHour = () => {
+      // Obtener la hora, los minutos y los segundos
+    const fechaActual = new Date();
+    const horas = fechaActual.getHours();
+    const minutos = fechaActual.getMinutes();
+    const segundos = fechaActual.getSeconds();
+  
+
+  // Formatear la fecha completa (día, mes, año)
+    const Hour = `${horas}:${minutos}:${segundos}`;
+    return Hour
+}
+
+const getDate = () => {
+    const fechaActual = new Date();
+    const day = fechaActual.getDay();
+    const month = fechaActual.getMonth() + 1;
+    const year = fechaActual.getFullYear();
+    
+    const date = `${day}-${month}-${year}`
+    return date
+}
 
 export default Home;

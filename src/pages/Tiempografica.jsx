@@ -8,11 +8,11 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const WeatherCharts = () => {
     // Configuración de los datos para los gráficos
     const data = {
-        timestamps: ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30'],
-        temperature: [25, 26, 27, 28, 29, 30],
-        pressure: [1015, 1014, 1013, 1012, 1011, 1010],
-        humidity: [50, 55, 60, 65, 70, 75],
-        windSpeed: [5, 10, 15, 20, 25, 30],
+        timestamps: ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '14:40'], 
+        temperature: [25, 26, 27, 28, 29, 30, 12],
+        pressure: [1015, 1014, 1013, 1012, 1011, 1010, 13],
+        humidity: [50, 55, 60, 65, 70, 75, 14],
+        windSpeed: [5, 10, 15, 20, 25, 30, 15],
     };
 
     // Datos para cada gráfico individual

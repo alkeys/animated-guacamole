@@ -61,7 +61,7 @@ function SerialConnection() {
     return (
         <div>
             <button
-                className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                className="hidden md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                 onClick={connectSerial} disabled={isConnected}
             >
                 {isConnected ? 'Conectado' : 'Conectar'}

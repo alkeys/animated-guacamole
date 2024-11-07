@@ -14,7 +14,7 @@ const ConnectionStatus = () => {
     }, []);
 
     return (
-        <div className="flex items-center space-x-2">
+        <div className="hidden sm:block md:block flex items-center space-x-2">
             {isConnected ? (
                 <>
                     <span className="material-icons text-green-500">check_circle</span>
