@@ -77,12 +77,24 @@ export  const obtenerDocumentosall= async (nombreColeccion) => {
     //
     try {
         const querySnapshot = await getDocs(collection(db, nombreColeccion));
-        const documents = [];
+        const data = {
+            timestamps: [],
+            temperature: [],
+            pressure: [],
+            humidity: [],
+            windSpeed: []
+          };
         querySnapshot.forEach((doc) => {
-            documents.push({ id: doc.id, ...doc.data() });
+            const medicion  = doc.data();
+            data.timestamps.push(doc.id); // La marca de tiempo es el ID del documento
+            data.temperature.push(medicion.temperature);
+            data.pressure.push(medicion.pressure);
+            data.humidity.push(medicion.humidity);
+            data.windSpeed.push(medicion.windSpeed);
+            
         });
-        console.log("Documentos: ", documents);
-        return documents;
+        console.log("Documentos: ", data);
+    ;
     } catch (error) {
         console.error("Error al obtener los documentos: ", error);
         return null;

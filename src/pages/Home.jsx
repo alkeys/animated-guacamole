@@ -27,7 +27,8 @@ const Home = () => {
                 humidity: HuemdadDHT(),
                 windSpeed: ObtenerVelicidad(),
                 latitude: LatitudGPS(),
-                longitude: LongitudGPS()
+                longitude: LongitudGPS(),
+                timestamps: [],
             };
             agregarMedicion(getDate(), getHour(), data)
         }, 1800); //1800000=30 minutos

@@ -136,4 +136,3 @@ export function ValorTor(){
     const datosObjeto = JSON.parse(obj);
     return datosObjeto.tor.V_ll;
 }
-

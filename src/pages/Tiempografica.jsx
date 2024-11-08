@@ -1,19 +1,33 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import {useState, useEffect} from "react";
+import { obtenerDocumentosall } from '../Service/Firebase/Crudfirebase';
 
 // Registrar los componentes necesarios de Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const WeatherCharts = () => {
     // Configuración de los datos para los gráficos
-    const data = {
-        timestamps: ['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '14:40'], 
-        temperature: [25, 26, 27, 28, 29, 30, 12],
-        pressure: [1015, 1014, 1013, 1012, 1011, 1010, 13],
-        humidity: [50, 55, 60, 65, 70, 75, 14],
-        windSpeed: [5, 10, 15, 20, 25, 30, 15],
-    };
+
+    const [data, setWeatherData] = useState({
+        timestamps: [], 
+        temperature: [],
+        pressure: [],
+        humidity: [],
+        windSpeed: [],
+    });
+
+    useEffect(() => {
+        
+        const interval = setInterval(() => {
+            const datos = obtenerDocumentosall(`Data/${getDate()}/valores`)
+            console.log("datos", datos)
+            setWeatherData(datos);
+        }, 18000); //1800000=30 minutos
+        return () => clearInterval(interval);
+
+    }, []);
 
     // Datos para cada gráfico individual
     const createChartData = (label, dataPoints, borderColor, backgroundColor) => ({
@@ -87,5 +101,15 @@ const WeatherCharts = () => {
         </div>
     );
 };
+
+const getDate = () => {
+    const fechaActual = new Date();
+    const day = fechaActual.getDay();
+    const month = fechaActual.getMonth() + 1;
+    const year = fechaActual.getFullYear();
+    
+    const date = `${day}-${month}-${year}`
+    return date
+}
 
 export default WeatherCharts;
