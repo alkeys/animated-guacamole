@@ -6,8 +6,8 @@ import Mapameteorologico from "../component/Mapameteorologico.jsx";
 import {useEffect} from "react";
 import {useState} from "react";
 import { agregarMedicion } from "../Service/Firebase/Crudfirebase.js";
-import { HuemdadDHT, MediaTempDhtBmp, ObtenerVelicidad, PresionBMP,LatitudGPS,LongitudGPS } from "../Service/DataControler.js";
-import {EstadoConexion} from "../Service/DataControler.js";
+import { HuemdadDHT, MediaTempDhtBmp, ObtenerVelicidad, PresionBMP,LatitudGPS,LongitudGPS, ObtenerData, EstadoConexion } from "../Service/DataControler.js";
+
 
 const Home = () => {
     const [ActivarPantalla, setActivarPantalla] = useState("Pantalla1");
@@ -19,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         const isConnected = EstadoConexion();
-        if (isMobile || !isConnected) return console.log("En mobile no carga datos o no estas conectado!"); 
+        if (!isMobile || isConnected) return console.log("En mobile no carga datos o no estas conectado!"); 
         const interval = setInterval(() => {
             const data = {
                 temperature: MediaTempDhtBmp().toFixed(2),
@@ -30,8 +30,9 @@ const Home = () => {
                 longitude: LongitudGPS(),
                 timestamps: [],
             };
+            console.log("Se ha subido")
             agregarMedicion(getDate(), getHour(), data)
-        }, 1800); //1800000=30 minutos
+        }, 3000); //1800000=30 minutos
         return () => clearInterval(interval);
     }, []);
 

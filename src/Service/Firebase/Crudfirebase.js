@@ -94,6 +94,7 @@ export  const obtenerDocumentosall= async (nombreColeccion) => {
             
         });
         console.log("Documentos: ", data);
+        return data;
     ;
     } catch (error) {
         console.error("Error al obtener los documentos: ", error);

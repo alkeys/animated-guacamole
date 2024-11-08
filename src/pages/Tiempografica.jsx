@@ -21,10 +21,12 @@ const WeatherCharts = () => {
     useEffect(() => {
         
         const interval = setInterval(() => {
-            const datos = obtenerDocumentosall(`Data/${getDate()}/valores`)
-            console.log("datos", datos)
-            setWeatherData(datos);
-        }, 18000); //1800000=30 minutos
+            obtenerDocumentosall(`Data/${getDate()}/valores`).then((datos) => {
+                console.log("datosss", datos)
+                setWeatherData(datos);
+            }).catch();
+            
+        }, 1800); //1800000=30 minutos
         return () => clearInterval(interval);
 
     }, []);
