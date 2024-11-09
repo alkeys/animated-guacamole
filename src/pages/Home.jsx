@@ -19,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         const isConnected = EstadoConexion();
-        if (!isMobile || isConnected) return console.log("En mobile no carga datos o no estas conectado!"); 
+        if (!isMobile || !isConnected) return console.log("En mobile no carga datos o no estas conectado!"); 
         const interval = setInterval(() => {
             const data = {
                 temperature: MediaTempDhtBmp().toFixed(2),
