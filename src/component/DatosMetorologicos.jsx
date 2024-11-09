@@ -26,6 +26,7 @@ const WeatherStation = () => {
             console.log("Datos Online");
             if (docSnapshot.exists()) {
               const data = docSnapshot.data();
+              console.log(data)
               setWeatherData(data);
               setLoading(false);
             } else {
