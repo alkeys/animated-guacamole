@@ -1,14 +1,22 @@
 import React from 'react';
+import DatePicker, {registerLocale} from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import {useState, useEffect} from "react";
 import { obtenerDocumentosall } from '../Service/Firebase/Crudfirebase';
+import es from 'date-fns/locale/es';
+import { format } from 'date-fns';
+
+registerLocale('es', es);
 
 // Registrar los componentes necesarios de Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const WeatherCharts = () => {
     // Configuración de los datos para los gráficos
+
+    const [dateSelected, setDateSelected] = useState(null);
 
     const [data, setWeatherData] = useState({
         timestamps: [], 
@@ -21,15 +29,19 @@ const WeatherCharts = () => {
     useEffect(() => {
         
         const interval = setInterval(() => {
-            obtenerDocumentosall(`Data/${getDate()}/valores`).then((datos) => {
-                console.log("datosss", datos)
+            obtenerDocumentosall(`Data/${dateSelected}/valores`).then((datos) => {
+                console.log("fecha", dateSelected ,"datosss", datos)
                 setWeatherData(datos);
             }).catch();
             
-        }, 1800); //1800000=30 minutos
+        }, 10000); //1800000=30 minutos
         return () => clearInterval(interval);
 
-    }, []);
+    }, [dateSelected]);
+
+    useEffect(() => {
+        console.log(dateSelected)
+    }, [dateSelected])
 
     // Datos para cada gráfico individual
     const createChartData = (label, dataPoints, borderColor, backgroundColor) => ({
@@ -61,11 +73,15 @@ const WeatherCharts = () => {
 
     return (
         <div className="p-6 bg-white rounded-lg shadow-lg">
+            <DatePicker value={dateSelected} onChange={(date) => {
+                const d = new Date(date);
+                const dformated = format(d, 'd-M-yyyy')
+                setDateSelected(dformated);}} dateFormat='dd/MM/yyyy' placeholderText='Fecha'></DatePicker>
             <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Gráficos de Parámetros Meteorológicos</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Gráfico de Temperatura */}
-                <div>
+                <div>   
                     <h3 className="text-xl font-bold text-gray-700 mb-2 text-center">Temperatura (°C)</h3>
                     <Line
                         data={createChartData('Temperatura (°C)', data.temperature, 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.2)')}
@@ -110,7 +126,7 @@ const getDate = () => {
     const month = fechaActual.getMonth() + 1;
     const year = fechaActual.getFullYear();
     
-    const date = `${day}-${month}-${year}`
+    const date = `${day}/${month}/${year}`
     return date
 }
 
