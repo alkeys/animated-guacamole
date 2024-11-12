@@ -64,9 +64,6 @@ const Header = ( {handleScreen}) => {
                     <button className="hidden sm:block md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla3")}>Mapas
                     </button>
-                    <button className="hidden sm:block md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
-                            onClick={() => handleScreen("Pantalla4")}>Informes
-                    </button>
                 </div>
             </div>
 

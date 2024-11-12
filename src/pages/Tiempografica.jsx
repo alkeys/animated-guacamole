@@ -73,10 +73,17 @@ const WeatherCharts = () => {
 
     return (
         <div className="p-6 bg-white rounded-lg shadow-lg">
-            <DatePicker value={dateSelected} onChange={(date) => {
-                const d = new Date(date);
-                const dformated = format(d, 'd-M-yyyy')
-                setDateSelected(dformated);}} dateFormat='dd/MM/yyyy' placeholderText='Fecha'></DatePicker>
+<DatePicker
+    className="border border-gray-300 rounded-md p-2 mb-4 w-full"
+    value={dateSelected}
+    onChange={(date) => {
+        const d = new Date(date);
+        const dformated = format(d, 'd-M-yyyy');
+        setDateSelected(dformated);
+    }}
+    dateFormat='dd/MM/yyyy'
+    placeholderText='Seleccionar Fecha'
+/>
             <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Gráficos de Parámetros Meteorológicos</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
