@@ -54,6 +54,7 @@ const Header = ( {handleScreen}) => {
                     <Seria></Seria>
                     <Carga></Carga>
                 </div>
+
                 <div className="botones  space-x-2">
                     <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
                             onClick={() => handleScreen("Pantalla1")}>Datos Meteorologicos
