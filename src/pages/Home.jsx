@@ -17,9 +17,6 @@ import {
     EstadoConexion,
     ValorTor, EstadoTor
 } from "../Service/DataControler.js";
-import {Snackbar} from "@mui/material";
-import BotonDescargarImagen from "../component/BotonDescargarImagen.jsx";
-import BotonDescargarPDF from "../component/BotonDescargarPDF.jsx";
 import {Descargadoc} from "../component/Descargadoc.jsx";
 import {Animacionxd} from "../component/Animacionxd.jsx";
 
@@ -27,6 +24,7 @@ import {Animacionxd} from "../component/Animacionxd.jsx";
 const Home = () => {
     const [ActivarPantalla, setActivarPantalla] = useState("Pantalla1");
     const [showSnackbar, setShowSnackbar] = useState(true);
+    const [mobile, setMobile] = useState(false);
     /**
      * funcion para guardar datos en la base de datos cada 30 minutos
      */
@@ -35,9 +33,9 @@ const Home = () => {
     
     useEffect(() => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+ setMobile(isMobile)
         var isConnected = EstadoConexion();
         console.log(isMobile)
-        isConnected = false
         console.log(isConnected)
         if (isMobile || !isConnected ) return console.log("En mobile no carga datos o no estas conectado!"); 
         console.log("ENVIADOS")
@@ -53,7 +51,7 @@ const Home = () => {
             };
             console.log("Se ha subido")
             agregarMedicion(getDate(), getHour(), data)
-        }, 3000); //1800000=30 minutos
+        }, 1000000); //1800000=30 minutos
 
 
         return () => clearInterval(interval);
@@ -78,10 +76,10 @@ const Home = () => {
     return (
         <div className="headerxd">
 
-            <Header handleScreen={handleScreen}/>
+            <Header mobile={mobile} handleScreen={handleScreen}/>
             {showSnackbar===true &&  <Animacionxd></Animacionxd>}
 
-            {ActivarPantalla === "Pantalla1" && <Pantalla1/>}
+            {ActivarPantalla === "Pantalla1" && <Pantalla1/>}¡
             {ActivarPantalla === "Pantalla2" && <Pantalla2/>}
             {ActivarPantalla === "Pantalla3" && <Pantalla3/>}
 

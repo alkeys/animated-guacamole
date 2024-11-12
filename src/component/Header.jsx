@@ -4,9 +4,10 @@ import Seria from "../Service/Seria.jsx";
 import Carga from "./Carga.jsx";
 
 
-const Header = ( {handleScreen}) => {
+const Header = ( {handleScreen,mobile}) => {
     const [drops, setDrops] = useState([]);
     const [isRaining, setIsRaining] = useState(true); // Estado para controlar la lluvia
+
 
     useEffect(() => {
         const createRaindrops = () => {
@@ -30,6 +31,7 @@ const Header = ( {handleScreen}) => {
     }, [isRaining]); // Re-crea las gotas de lluvia si isRaining cambia
 
 
+
     // Controlar la lluvia
     const handleMouseEnter = () => {
         setIsRaining(false); // Detiene la lluvia al pasar el mouse
@@ -50,10 +52,10 @@ const Header = ( {handleScreen}) => {
             <div className="rain-container">{drops}</div>
 
             <div className="mt-6 flex  justify-center space-x-4 z-10 relative">
-                <div className={"botones"}>
+                {mobile === false && <div className={"botones"}>
                     <Seria></Seria>
                     <Carga></Carga>
-                </div>
+                </div>}
 
                 <div className="botones  space-x-2">
                     <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
