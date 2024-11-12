@@ -27,6 +27,7 @@ const Home = () => {
     const [showSnackbar, setShowSnackbar] = useState(false);
     const [mobile, setMobile] = useState(false);
     const [lluv,setLluvi]= useState(ValorTor());
+    const [isConnected, setIsConnected] = useState(EstadoConexion());
     /**
      * funcion para guardar datos en la base de datos cada 30 minutos
      */
@@ -36,7 +37,6 @@ const Home = () => {
     useEffect(() => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
  setMobile(isMobile)
-        var isConnected = EstadoConexion();
         console.log(isMobile)
         console.log(isConnected)
         if (isMobile || !isConnected ) return console.log("En mobile no carga datos o no estas conectado!"); 
@@ -57,7 +57,7 @@ const Home = () => {
 
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isConnected]);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
