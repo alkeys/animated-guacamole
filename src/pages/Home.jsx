@@ -24,8 +24,9 @@ import { format } from "date-fns";
 
 const Home = () => {
     const [ActivarPantalla, setActivarPantalla] = useState("Pantalla1");
-    const [showSnackbar, setShowSnackbar] = useState(true);
+    const [showSnackbar, setShowSnackbar] = useState(false);
     const [mobile, setMobile] = useState(false);
+    const [lluv,setLluvi]= useState(ValorTor());
     /**
      * funcion para guardar datos en la base de datos cada 30 minutos
      */
@@ -52,22 +53,21 @@ const Home = () => {
             };
             console.log("Se ha subido")
             agregarMedicion(getDate(), getHour(), data)
-        }, 900000); //1800000=30 minutos
+        }, 60000)  ; //1800000=30 minutos
 
 
         return () => clearInterval(interval);
     }, []);
 
-
     useEffect(() => {
-        const valorlluvia = EstadoTor(); // "tor":{"E_ll":false,"V_ll":0}}
-        if (valorlluvia) {
-            setShowSnackbar(true);
-        } else {
-            setShowSnackbar(false);
-        }
-    }, []);
+        const interval = setInterval(() => {
+            setLluvi(ValorTor()); 
+            setShowSnackbar(lluv);
+        }, 3000); 
 
+        return () => clearInterval(interval);
+    }, []);
+   
     const handleScreen = (Screen) => {
         setActivarPantalla(Screen);
     }
