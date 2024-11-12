@@ -19,6 +19,7 @@ import {
 } from "../Service/DataControler.js";
 import {Descargadoc} from "../component/Descargadoc.jsx";
 import {Animacionxd} from "../component/Animacionxd.jsx";
+import { format } from "date-fns";
 
 
 const Home = () => {
@@ -152,12 +153,9 @@ const getHour = () => {
 
 const getDate = () => {
     const fechaActual = new Date();
-    const day = fechaActual.getDay();
-    const month = fechaActual.getMonth() + 1;
-    const year = fechaActual.getFullYear();
-    
-    const date = `${day}-${month}-${year}`
-    return date
+    const dformated = format(fechaActual, 'd-M-yyyy');
+
+    return dformated    
 }
 
 export default Home;
