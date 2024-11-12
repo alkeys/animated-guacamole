@@ -39,9 +39,11 @@ const Home = () => {
  setMobile(isMobile)
         console.log(isMobile)
         console.log(isConnected)
-        if (isMobile || !isConnected ) return console.log("En mobile no carga datos o no estas conectado!"); 
+         
         console.log("ENVIADOS")
         const interval = setInterval(() => {
+            setIsConnected(EstadoConexion());
+            if (isMobile || !isConnected ) return console.log("En mobile no carga datos o no estas conectado!");
             const data = {
                 temperature: MediaTempDhtBmp().toFixed(2),
                 pressure: PresionBMP().toFixed(2),
