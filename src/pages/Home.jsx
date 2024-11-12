@@ -21,6 +21,7 @@ import {Snackbar} from "@mui/material";
 import BotonDescargarImagen from "../component/BotonDescargarImagen.jsx";
 import BotonDescargarPDF from "../component/BotonDescargarPDF.jsx";
 import {Descargadoc} from "../component/Descargadoc.jsx";
+import {Animacionxd} from "../component/Animacionxd.jsx";
 
 
 const Home = () => {
@@ -78,11 +79,12 @@ const Home = () => {
         <div className="headerxd">
 
             <Header handleScreen={handleScreen}/>
+            {showSnackbar===true &&  <Animacionxd></Animacionxd>}
 
             {ActivarPantalla === "Pantalla1" && <Pantalla1/>}
             {ActivarPantalla === "Pantalla2" && <Pantalla2/>}
             {ActivarPantalla === "Pantalla3" && <Pantalla3/>}
-            {ActivarPantalla === "Pantalla4" && <Pantalla4/>}
+
 
             {showSnackbar && (
                 <div
@@ -100,6 +102,7 @@ const Home = () => {
                         />
                     </svg>
                     <span>Lloviendo</span>
+                    <Animacionxd></Animacionxd>
                 </div>
             )}
 
