@@ -60,13 +60,19 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setLluvi(ValorTor()); 
-            setShowSnackbar(lluv);
-        }, 3000); 
-
-        return () => clearInterval(interval);
+        const intervalId = setInterval(() => {
+            const valorlluvia = EstadoTor(); // "tor": {"E_ll": false, "V_ll": 0}
+            if (valorlluvia) {
+                setShowSnackbar(true);
+            } else {
+                setShowSnackbar(false);
+            }
+        }, 3000); // 3000ms = 3 segundos
+    
+        // Limpiar el intervalo cuando el componente se desmonte
+        return () => clearInterval(intervalId);
     }, []);
+    
    
     const handleScreen = (Screen) => {
         setActivarPantalla(Screen);
