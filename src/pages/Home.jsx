@@ -36,6 +36,7 @@ const Home = () => {
  setMobile(isMobile)
         var isConnected = EstadoConexion();
         console.log(isMobile)
+        isConnected = false
         console.log(isConnected)
         if (isMobile || !isConnected ) return console.log("En mobile no carga datos o no estas conectado!"); 
         console.log("ENVIADOS")
@@ -51,7 +52,7 @@ const Home = () => {
             };
             console.log("Se ha subido")
             agregarMedicion(getDate(), getHour(), data)
-        }, 1000000); //1800000=30 minutos
+        }, 3000); //1800000=30 minutos
 
 
         return () => clearInterval(interval);
