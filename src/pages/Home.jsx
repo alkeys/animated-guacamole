@@ -53,7 +53,7 @@ const Home = () => {
             };
             console.log("Se ha subido")
             agregarMedicion(getDate(), getHour(), data)
-        }, 3000)  ; //1800000=30 minutos
+        }, 30000)  ; //1800000=30 minutos
 
 
         return () => clearInterval(interval);
