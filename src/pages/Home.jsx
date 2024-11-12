@@ -87,8 +87,8 @@ const Home = () => {
             {showSnackbar===true &&  <Animacionxd></Animacionxd>}
 
             {ActivarPantalla === "Pantalla1" && <Pantalla1/>}¡
-            {ActivarPantalla === "Pantalla2" && <Pantalla2/>}
-            {ActivarPantalla === "Pantalla3" && <Pantalla3/>}
+            {ActivarPantalla === "Pantalla2" && <Pantalla2 mobile={mobile}/>}
+            {ActivarPantalla === "Pantalla3" && <Pantalla3 />}
 
 
             {showSnackbar && (
@@ -127,9 +127,9 @@ const Pantalla1 = () => (
 );
 
 
-const Pantalla2 = () => (
+const Pantalla2 = ({mobile}) => (
     <div id={"pantalla2"} className="text-blue-600 text-2xl font-bold  space-y-3 h-full">
-        <Descargadoc idElemento="pantalla2" Nombrepdf="Datos"/>
+        {mobile ==false && <Descargadoc idElemento="pantalla2" Nombrepdf="Datos"/>}
         <Tiempografica></Tiempografica>
     </div>
     )
@@ -137,7 +137,7 @@ const Pantalla2 = () => (
 
 const Pantalla3 = () => (
     <div id={"pantalla3"} className="text-blue-600 text-2xl font-bold  space-y-3 h-full">
-        <Mapameteorologico></Mapameteorologico>
+        <Mapameteorologico ></Mapameteorologico>
     </div>
 );
 
