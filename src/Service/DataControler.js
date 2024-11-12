@@ -4,7 +4,7 @@
  * @returns {string}
  * @constructor
  */
-import datajs from './data.json' assert { type: 'json' };
+import datajs from '../Data/data.json' assert { type: 'json' };
 
 
 
@@ -136,4 +136,3 @@ export function ValorTor(){
     const datosObjeto = JSON.parse(obj);
     return datosObjeto.tor.V_ll;
 }
-

@@ -4,9 +4,10 @@ import Seria from "../Service/Seria.jsx";
 import Carga from "./Carga.jsx";
 
 
-const Header = () => {
+const Header = ( {handleScreen,mobile}) => {
     const [drops, setDrops] = useState([]);
     const [isRaining, setIsRaining] = useState(true); // Estado para controlar la lluvia
+
 
     useEffect(() => {
         const createRaindrops = () => {
@@ -30,6 +31,7 @@ const Header = () => {
     }, [isRaining]); // Re-crea las gotas de lluvia si isRaining cambia
 
 
+
     // Controlar la lluvia
     const handleMouseEnter = () => {
         setIsRaining(false); // Detiene la lluvia al pasar el mouse
@@ -49,13 +51,26 @@ const Header = () => {
             <p className="text-lg">Proyecto de Arquitetura</p>
             <div className="rain-container">{drops}</div>
 
-            <div className="mt-6 flex justify-center space-x-4 z-10 relative">
-                <div className={"botones"}>
+            <div className="mt-6 flex  justify-center space-x-4 z-10 relative">
+                {mobile === false && <div className={"botones"}>
                     <Seria></Seria>
-                    <Carga ></Carga>
-                </div>
+                    <Carga></Carga>
+                </div>}
 
+                <div className="botones  space-x-2">
+                    <button className="bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla1")}>Datos Meteorologicos
+                    </button>
+                    <button className="block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla2")}>Graficos
+                    </button>
+                    <button className="hidden sm:block md:block bg-white text-blue-500 py-2 px-4 rounded hover:bg-gray-200 transition"
+                            onClick={() => handleScreen("Pantalla3")}>Mapas
+                    </button>
+                </div>
             </div>
+
+
         </header>
     );
 };

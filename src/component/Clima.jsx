@@ -45,7 +45,7 @@ export default function WeatherCurrent() {
     if (!weather || !forecast) return <div className="text-center p-4">Cargando...</div>;
 
     return (
-        <div className="climatotal bg-gray-100 shadow-lg rounded-lg p-6  mx-auto ">
+        <div className="hidden sm:block md:block climatotal bg-gray-400 shadow-lg rounded-lg p-6  mx-auto ">
             <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">{"Clima api"}</h2>
 
             <div className={"cardClimaApi"}>
