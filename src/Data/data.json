@@ -3,4 +3,4 @@
   "BMP":{"tp":0,"pr":0},
   "GPS": {"la": 13.6929,"lo": -89.2182,"al": 658,
   "fecha":{"d":0,"me":0,"anio":0},"hora":{"h":0,"m":0}},
-  "tor":{"E_ll":true,"V_ll":0}}
+  "tor":{"E_ll":false,"V_ll":0}}
